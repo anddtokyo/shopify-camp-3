@@ -1,0 +1,47 @@
+.border-collection {
+	border-top: 1px solid #FF90B0;
+	border-bottom: 1px solid #FF90B0;
+	padding-top: 32px;
+	padding-bottom: 32px;
+}
+
+.collection__title {
+	color: #000;
+	font-size: 27px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: normal;
+	letter-spacing: 1.755px;
+	text-transform: uppercase;
+}
+
+.collection__description {
+	margin-top: 14px;
+	max-width: 686px;
+	width: 686px;
+	display: flex;
+	gap: 10px;
+	cursor: pointer;
+	align-items: center;
+	transition: transform 0.3s;
+}
+
+.collection__description__text {
+	color: #000;
+	font-size: 14.79px;
+	font-style: normal;
+	font-weight: 390;
+	line-height: 138%;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	transition: transform 0.3s;
+}
+
+
+@media screen and (max-width: 749px) {
+	.border-collection {
+		padding-top: 18px;
+		padding-bottom: 18px;
+	}
+}

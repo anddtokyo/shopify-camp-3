@@ -679,6 +679,11 @@
         "name": "Custom Liquid"
       }
     },
+    "additional-seo-placement":{
+      "name":"Additional Seo Placement",
+      "content": "Content",
+      "title": "Additional SEO Placement"
+    },
     "featured-blog": {
       "name": "Blog posts",
       "settings": {
