@@ -66,10 +66,21 @@
         "padding_top": 44,
         "padding_bottom": 36
       }
+    },
+    "bf126564-ba9e-45ed-81bf-6fa044d326f1": {
+      "type": "additional-seo-placement",
+      "settings": {
+        "color_scheme": "",
+        "title": "Additional SEO Placement",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
     }
   },
   "order": [
     "image_banner",
-    "featured_collection"
+    "featured_collection",
+    "bf126564-ba9e-45ed-81bf-6fa044d326f1"
   ]
 }

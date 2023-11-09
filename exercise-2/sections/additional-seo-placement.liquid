@@ -1,0 +1,98 @@
+{{ 'additional-seo-placement.css' | asset_url | stylesheet_tag }}
+
+<script src="{{ 'additional-seo-placement.js' | asset_url }}" defer="defer"></script>
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="section-{{ section.id }}-padding page-width">
+    <div class="border-collection">
+      <div class="collection__title ">
+        <div>{{ section.settings.title }}</div>
+      </div>
+
+      {% if section.settings.content != blank %}
+        <collection-description data-collection-id="{{ section.id }}">
+          <div class="collection__description">
+            <div
+              class="collection__description__text"
+              id="collection__description__text-{{ section.id }}"
+              style="-webkit-line-clamp: 2;"
+            >
+              {{ section.settings.content }}
+            </div>
+            <div
+              class="collection__description__button"
+              id="collection__description__button-{{ section.id }}"
+            >
+              {% render 'icon-arrow-down-pink' %}
+            </div>
+          </div>
+        </collection-description>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.additional-seo-placement.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "background-1"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:sections.additional-seo-placement.title"
+    },
+    {
+      "type": "textarea",
+      "id": "content",
+      "label": "t:sections.additional-seo-placement.content"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.additional-seo-placement.name"
+    }
+  ]
+}
+{% endschema %}
