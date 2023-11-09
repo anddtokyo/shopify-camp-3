@@ -1921,6 +1921,10 @@
     "main-product": {
       "name": "Product information",
       "blocks": {
+        "line_item":{
+          "name": "Line Item",
+          "title": "Line item Properties:"
+        },
         "text": {
           "name": "Text",
           "settings": {
