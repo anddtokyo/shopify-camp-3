@@ -2,7 +2,7 @@
 
 name = "demetio-products-app"
 client_id = "7daa6d2c40b140ed1533f97bf4b34845"
-application_url = "https://possession-deemed-indicating-nbc.trycloudflare.com"
+application_url = "https://clearing-roy-updates-chargers.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -11,10 +11,10 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://possession-deemed-indicating-nbc.trycloudflare.com/auth/callback",
-  "https://possession-deemed-indicating-nbc.trycloudflare.com/auth/shopify/callback",
-  "https://possession-deemed-indicating-nbc.trycloudflare.com/api/auth/callback",
-  "https://possession-deemed-indicating-nbc.trycloudflare.com/.shopify/graphiql/auth/callback"
+  "https://clearing-roy-updates-chargers.trycloudflare.com/auth/callback",
+  "https://clearing-roy-updates-chargers.trycloudflare.com/auth/shopify/callback",
+  "https://clearing-roy-updates-chargers.trycloudflare.com/api/auth/callback",
+  "https://clearing-roy-updates-chargers.trycloudflare.com/.shopify/graphiql/auth/callback"
 ]
 
 [webhooks]
