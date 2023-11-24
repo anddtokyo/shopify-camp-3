@@ -47,11 +47,11 @@ export function OrdersTable() {
   const fetchProducts = async () => {
     try {
       setLoading(true);
-      const getProductsResponse = await authenticatedFetch(
-        `/api/products?startDate=${selectedDates.start.toISOString()}&endDate=${selectedDates.end.toISOString()}`
-      ).then((res) => res.json());
+      const getProductsResponse = await authenticatedFetch("/api/pixels", {
+        method: "post",
+      });
 
-      setTableRows(parseTableData(getProductsResponse.products));
+      // setTableRows(parseTableData(getProductsResponse.products));
     } catch (e) {
       console.error(e);
     }

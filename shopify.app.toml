@@ -1,20 +1,20 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
-name = "demetio-products-app"
+name = "demetio-extensions-app"
 client_id = "7daa6d2c40b140ed1533f97bf4b34845"
-application_url = "https://clearing-roy-updates-chargers.trycloudflare.com"
+application_url = "https://life-lie-offensive-bought.trycloudflare.com"
 embedded = true
 
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
-scopes = "write_products"
+scopes = "write_products,write_pixels,read_customer_events"
 
 [auth]
 redirect_urls = [
-  "https://clearing-roy-updates-chargers.trycloudflare.com/auth/callback",
-  "https://clearing-roy-updates-chargers.trycloudflare.com/auth/shopify/callback",
-  "https://clearing-roy-updates-chargers.trycloudflare.com/api/auth/callback",
-  "https://clearing-roy-updates-chargers.trycloudflare.com/.shopify/graphiql/auth/callback"
+  "https://life-lie-offensive-bought.trycloudflare.com/auth/callback",
+  "https://life-lie-offensive-bought.trycloudflare.com/auth/shopify/callback",
+  "https://life-lie-offensive-bought.trycloudflare.com/api/auth/callback",
+  "https://life-lie-offensive-bought.trycloudflare.com/.shopify/graphiql/auth/callback"
 ]
 
 [webhooks]
@@ -25,4 +25,4 @@ embedded = false
 
 [build]
 automatically_update_urls_on_dev = true
-dev_store_url = "data-export-minhnb.myshopify.com"
+dev_store_url = "preview-for-checkout.myshopify.com"
