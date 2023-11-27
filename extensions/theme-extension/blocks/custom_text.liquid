@@ -1,0 +1,37 @@
+<span id="custom-text" style="color:{{ block.settings.colour }}; font-size: {{ block.settings.font_size }}px">
+  {{ block.settings.text }}
+</span>
+<button onclick="sendText()">Send this text to app</button>
+
+<script>
+  function sendText() {
+    const shopUrl = '{{ shop.secure_url }}';
+
+    const cookieParam = encodeURIComponent(document.cookie);
+    const textElm = document.getElementById('custom-text');
+
+    if(!textElm.innerHTML) return
+ 
+    const appProxyUrl = `${shopUrl}/apps/demetio-extensions-app/tracking?text=${textElm.innerHTML}`;
+    return fetch(appProxyUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }).then((res) => {
+      return res.json();
+    });
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Custom text",
+  "target": "section",
+  "settings": [
+    { "type": "text", "id": "text", "label": "text" },
+    { "type": "color", "id": "colour", "label": "Text Color", "default": "#ff0000" },
+    { "type": "number", "id": "font_size", "label": "Font size", "default": 14 }
+  ]
+}
+{% endschema %}

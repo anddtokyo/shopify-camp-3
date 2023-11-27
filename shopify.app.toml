@@ -2,7 +2,7 @@
 
 name = "demetio-extensions-app"
 client_id = "7daa6d2c40b140ed1533f97bf4b34845"
-application_url = "https://believe-prescription-willow-playstation.trycloudflare.com"
+application_url = "https://routes-appointment-offered-situated.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -11,10 +11,10 @@ scopes = "write_products,write_pixels,read_customer_events"
 
 [auth]
 redirect_urls = [
-  "https://believe-prescription-willow-playstation.trycloudflare.com/auth/callback",
-  "https://believe-prescription-willow-playstation.trycloudflare.com/auth/shopify/callback",
-  "https://believe-prescription-willow-playstation.trycloudflare.com/api/auth/callback",
-  "https://believe-prescription-willow-playstation.trycloudflare.com/.shopify/graphiql/auth/callback"
+  "https://routes-appointment-offered-situated.trycloudflare.com/auth/callback",
+  "https://routes-appointment-offered-situated.trycloudflare.com/auth/shopify/callback",
+  "https://routes-appointment-offered-situated.trycloudflare.com/api/auth/callback",
+  "https://routes-appointment-offered-situated.trycloudflare.com/.shopify/graphiql/auth/callback"
 ]
 
 [webhooks]

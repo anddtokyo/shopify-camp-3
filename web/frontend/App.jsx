@@ -23,8 +23,16 @@ export default function App() {
             <NavigationMenu
               navigationLinks={[
                 {
-                  label: t("NavigationMenu.pageName"),
-                  destination: "/pagename",
+                  label: t("Theme app extension and app proxy"),
+                  destination: "/theme-app",
+                },
+                {
+                  label: t("Checkout UI extension"),
+                  destination: "/checkout-ui",
+                },
+                {
+                  label: t("Shopify function"),
+                  destination: "/shopify-function",
                 },
               ]}
             />

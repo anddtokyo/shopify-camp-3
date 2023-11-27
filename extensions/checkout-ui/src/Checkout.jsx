@@ -1,8 +1,9 @@
 import {
   Banner,
   useApi,
-  useTranslate,
   reactExtension,
+  useSubtotalAmount,
+  Text,
 } from "@shopify/ui-extensions-react/checkout";
 
 export default reactExtension("purchase.checkout.block.render", () => (
@@ -10,12 +11,15 @@ export default reactExtension("purchase.checkout.block.render", () => (
 ));
 
 function Extension() {
-  const translate = useTranslate();
-  const { extension } = useApi();
+  const { shop } = useApi();
+  const amount = useSubtotalAmount();
 
   return (
-    <Banner title="checkout-ui">
-      {translate("welcome", { target: extension.target })}
+    <Banner title="This banner is from Checkout UI">
+      <Text>
+        Thanks for purchasing {amount.amount} {amount.currencyCode} from our
+        shop <Text emphasis="bold">{shop.name}</Text>
+      </Text>
     </Banner>
   );
 }

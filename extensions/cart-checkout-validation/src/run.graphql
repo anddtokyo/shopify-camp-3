@@ -1,13 +1,17 @@
 query RunInput {
   cart {
-    buyerIdentity {
-      customer {
-        numberOfOrders
-      }
-    }
-    cost {
-      subtotalAmount {
-        amount
+    deliverableLines {
+      quantity
+      merchandise {
+        __typename
+        ... on ProductVariant {
+          product {
+            title
+          }
+        }
+        ... on CustomProduct {
+          customProductTitle: title
+        }
       }
     }
   }
