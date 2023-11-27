@@ -45,10 +45,10 @@ export default function ThemeAppExtension() {
         </div>
         <List>
           <List.Item>
-            Go to your Shopify Partners{" "}
+            Go to your{" "}
             <b>
-              {">"} Apps {">"} demetio-extensions-app {">"} App setup {">"} App
-              proxy.
+              Shopify Partners {">"} Apps {">"} demetio-extensions-app {">"} App
+              setup {">"} App proxy.
             </b>
           </List.Item>
           <List.Item>
