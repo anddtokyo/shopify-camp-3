@@ -2,7 +2,7 @@
 
 name = "exercise-5"
 client_id = "55478f3817b9af3748265c3460f573f0"
-application_url = "https://nn-image-oscar-please.trycloudflare.com"
+application_url = "https://crisis-nearby-gravity-arms.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -11,10 +11,10 @@ scopes = "write_products,write_pixels,read_customer_events"
 
 [auth]
 redirect_urls = [
-  "https://nn-image-oscar-please.trycloudflare.com/auth/callback",
-  "https://nn-image-oscar-please.trycloudflare.com/auth/shopify/callback",
-  "https://nn-image-oscar-please.trycloudflare.com/api/auth/callback",
-  "https://nn-image-oscar-please.trycloudflare.com/.shopify/graphiql/auth/callback"
+  "https://crisis-nearby-gravity-arms.trycloudflare.com/auth/callback",
+  "https://crisis-nearby-gravity-arms.trycloudflare.com/auth/shopify/callback",
+  "https://crisis-nearby-gravity-arms.trycloudflare.com/api/auth/callback",
+  "https://crisis-nearby-gravity-arms.trycloudflare.com/.shopify/graphiql/auth/callback"
 ]
 
 [webhooks]

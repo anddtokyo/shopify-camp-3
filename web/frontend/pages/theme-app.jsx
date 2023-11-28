@@ -45,25 +45,6 @@ export default function ThemeAppExtension() {
         </div>
         <List>
           <List.Item>
-            Go to your{" "}
-            <b>
-              Shopify Partners {">"} Apps {">"} exercise-5 {">"} App setup {">"}{" "}
-              App proxy.
-            </b>
-          </List.Item>
-          <List.Item>
-            Set Subpath prefix to <b>apps.</b>
-          </List.Item>
-          <List.Item>
-            Set Subpath to <b>exercise-5.</b>
-          </List.Item>
-          <List.Item>
-            Set Proxy URL to{" "}
-            <b>
-              https://uc-predictions-solely-bahrain.trycloudflare.com/api/proxy.
-            </b>
-          </List.Item>
-          <List.Item>
             Go to <b>Online Store {">"} Theme.</b>
           </List.Item>
           <List.Item>
@@ -77,8 +58,8 @@ export default function ThemeAppExtension() {
           </List.Item>
           <List.Item>Set your text, color and font size.</List.Item>
           <List.Item>
-            Press <b>Send this text to app</b> and the text will be displayed in
-            the table below.
+            Press <b>Send this text to app</b>, the text will be sent through
+            app proxy and displayed in the table below.
           </List.Item>
         </List>
 
