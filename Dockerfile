@@ -5,6 +5,8 @@ ENV SHOPIFY_API_KEY=$SHOPIFY_API_KEY
 EXPOSE 8081
 WORKDIR /app
 COPY web .
+COPY .env .
+RUN ls -la
 RUN npm install
-RUN cd frontend && npm install && npm run build
+RUN cd frontend && npm install && SHOPIFY_API_KEY=$SHOPIFY_API_KEY npm run build
 CMD ["npm", "run", "serve"]

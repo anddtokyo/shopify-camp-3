@@ -1,6 +1,6 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
-name = "demetio-extensions-app"
+name = "exercise-5"
 client_id = "74251c3eb825715958583a4a3a23789a"
 application_url = "https://uc-predictions-solely-bahrain.trycloudflare.com"
 embedded = true
@@ -22,7 +22,7 @@ api_version = "2023-10"
 
 [app_proxy]
 url = "https://uc-predictions-solely-bahrain.trycloudflare.com/api/proxy"
-subpath = "demetio-extensions-app"
+subpath = "exercise-5"
 prefix = "apps"
 
 [pos]

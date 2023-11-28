@@ -47,15 +47,15 @@ export default function ThemeAppExtension() {
           <List.Item>
             Go to your{" "}
             <b>
-              Shopify Partners {">"} Apps {">"} demetio-extensions-app {">"} App
-              setup {">"} App proxy.
+              Shopify Partners {">"} Apps {">"} exercise-5 {">"} App setup {">"}{" "}
+              App proxy.
             </b>
           </List.Item>
           <List.Item>
             Set Subpath prefix to <b>apps.</b>
           </List.Item>
           <List.Item>
-            Set Subpath to <b>demetio-extensions-app.</b>
+            Set Subpath to <b>exercise-5.</b>
           </List.Item>
           <List.Item>
             Set Proxy URL to{" "}
