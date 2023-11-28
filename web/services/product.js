@@ -13,7 +13,7 @@ export class ProductService {
     try {
       const response = await this.graphqlClient.query({
         data: `query {
-          products(first: 250, query: "created_at:>${createdAtMin}") {
+          products(first: 250, query: "created_at:>${createdAtMin} AND created_at:<${createdAtMax}") {
             edges {
               node {
                 title

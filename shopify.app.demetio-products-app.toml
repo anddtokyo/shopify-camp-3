@@ -1,0 +1,28 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+name = "demetio-products-app"
+client_id = "adc94e07903e593675901ebc5defe8d9"
+application_url = "https://bull-config-market-occurs.trycloudflare.com"
+embedded = true
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "write_products"
+
+[auth]
+redirect_urls = [
+  "https://bull-config-market-occurs.trycloudflare.com/auth/callback",
+  "https://bull-config-market-occurs.trycloudflare.com/auth/shopify/callback",
+  "https://bull-config-market-occurs.trycloudflare.com/api/auth/callback",
+  "https://bull-config-market-occurs.trycloudflare.com/.shopify/graphiql/auth/callback"
+]
+
+[webhooks]
+api_version = "2023-10"
+
+[pos]
+embedded = false
+
+[build]
+automatically_update_urls_on_dev = true
+dev_store_url = "preview-for-checkout.myshopify.com"
