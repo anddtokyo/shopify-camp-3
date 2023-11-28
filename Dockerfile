@@ -14,6 +14,7 @@ EXPOSE 8081
 WORKDIR /app
 COPY web .
 COPY .env .env
+RUN cat .env
 RUN npm install
 RUN cd frontend && npm install && npm run build
 CMD ["npm", "run", "serve"]
