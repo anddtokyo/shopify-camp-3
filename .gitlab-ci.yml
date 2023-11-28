@@ -23,7 +23,6 @@ build-caprover:
     - apk add openssl git --update
     - git clone -b "${SECRET_MANAGER_BRANCH_NAME}" "https://gitlab-ci-token:${CI_JOB_TOKEN}@${SECRET_MANAGER_REPO_URL}" ".workspace/demetio-env"
     - cat $EX_4_ENV > .env
-    - cat .env
   after_script:
     - docker logout $CI_REGISTRY
   script:
