@@ -1,5 +1,6 @@
 // @ts-check
 import "dotenv/config";
+import * as dotenv from "dotenv";
 import { join } from "path";
 import { readFileSync } from "fs";
 import express from "express";
@@ -9,6 +10,10 @@ import shopify from "./shopify.js";
 import productCreator from "./product-creator.js";
 import PrivacyWebhookHandlers from "./privacy.js";
 import { getProducts } from "./controllers/product.js";
+
+dotenv.config({
+  path: "./.env",
+});
 
 const PORT = parseInt(
   process.env.BACKEND_PORT || process.env.PORT || "3000",
@@ -73,5 +78,7 @@ app.use("/*", shopify.ensureInstalledOnShop(), async (_req, res, _next) => {
     .set("Content-Type", "text/html")
     .send(readFileSync(join(STATIC_PATH, "index.html")));
 });
+
+console.log(process.env.HOST);
 
 app.listen(PORT);
