@@ -1,8 +1,8 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
 name = "exercise-5"
-client_id = "7daa6d2c40b140ed1533f97bf4b34845"
-application_url = "https://routes-appointment-offered-situated.trycloudflare.com"
+client_id = "55478f3817b9af3748265c3460f573f0"
+application_url = "https://analysis-suddenly-belong-adsl.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -11,14 +11,19 @@ scopes = "write_products,write_pixels,read_customer_events"
 
 [auth]
 redirect_urls = [
-  "https://routes-appointment-offered-situated.trycloudflare.com/auth/callback",
-  "https://routes-appointment-offered-situated.trycloudflare.com/auth/shopify/callback",
-  "https://routes-appointment-offered-situated.trycloudflare.com/api/auth/callback",
-  "https://routes-appointment-offered-situated.trycloudflare.com/.shopify/graphiql/auth/callback"
+  "https://analysis-suddenly-belong-adsl.trycloudflare.com/auth/callback",
+  "https://analysis-suddenly-belong-adsl.trycloudflare.com/auth/shopify/callback",
+  "https://analysis-suddenly-belong-adsl.trycloudflare.com/api/auth/callback",
+  "https://analysis-suddenly-belong-adsl.trycloudflare.com/.shopify/graphiql/auth/callback"
 ]
 
 [webhooks]
 api_version = "2023-10"
+
+[app_proxy]
+url = "https://analysis-suddenly-belong-adsl.trycloudflare.com/api/proxy"
+subpath = "exercise-5"
+prefix = "apps"
 
 [pos]
 embedded = false

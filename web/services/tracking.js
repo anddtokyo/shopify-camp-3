@@ -8,6 +8,7 @@ export const saveLog = (customText) => {
 export const getLogs = (callback) => {
   db.all("SELECT * FROM tracking", (err, rows) => {
     if (err) {
+      console.log({ err });
       throw err;
     }
     console.log({ rows });
