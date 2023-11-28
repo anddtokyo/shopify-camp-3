@@ -1,6 +1,6 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
-name = "demetio-products-app"
+name = "exercise-4"
 client_id = "7daa6d2c40b140ed1533f97bf4b34845"
 application_url = "https://clearing-roy-updates-chargers.trycloudflare.com"
 embedded = true

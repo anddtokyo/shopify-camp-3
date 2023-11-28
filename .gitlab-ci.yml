@@ -22,9 +22,7 @@ build-caprover:
     - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY --username $CI_REGISTRY_USER --password-stdin
     - apk add openssl git --update
     - git clone -b "${SECRET_MANAGER_BRANCH_NAME}" "https://gitlab-ci-token:${CI_JOB_TOKEN}@${SECRET_MANAGER_REPO_URL}" ".workspace/demetio-env"
-    - cat ".workspace/demetio-env/files/${CI_PROJECT_NAME}/.env" | openssl enc -base64 -d -aes-256-cbc -salt -pass pass:$ENV_FILE_DECRYPT_SECRET -pbkdf2 > .env.temp
-    - cat .env.temp
-    - sed 's/EX_4_SHOPIFY_API_KEY=/SHOPIFY_API_KEY=/; s/EX_4_SHOPIFY_API_SECRET=/SHOPIFY_API_SECRET=/; s/EX_4_SCOPES=/SCOPES=/; s/EX_4_HOST=/HOST=/; s/EX_4_NODE_ENV=/NODE_ENV=/; s/EX_4_SHOPIFY_APP_URL=/SHOPIFY_APP_URL=/' .env.temp > .env
+    - cat $EX_4_ENV > .env
     - cat .env
   after_script:
     - docker logout $CI_REGISTRY

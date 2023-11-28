@@ -1,8 +1,8 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
 name = "exercise-4"
-client_id = "adc94e07903e593675901ebc5defe8d9"
-application_url = "https://bull-config-market-occurs.trycloudflare.com"
+client_id = "3fd655b647a6762f398c0240c32b4f2f"
+application_url = "https://acm-monsters-webcams-drove.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -11,10 +11,10 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://bull-config-market-occurs.trycloudflare.com/auth/callback",
-  "https://bull-config-market-occurs.trycloudflare.com/auth/shopify/callback",
-  "https://bull-config-market-occurs.trycloudflare.com/api/auth/callback",
-  "https://bull-config-market-occurs.trycloudflare.com/.shopify/graphiql/auth/callback"
+  "https://acm-monsters-webcams-drove.trycloudflare.com/auth/callback",
+  "https://acm-monsters-webcams-drove.trycloudflare.com/auth/shopify/callback",
+  "https://acm-monsters-webcams-drove.trycloudflare.com/api/auth/callback",
+  "https://acm-monsters-webcams-drove.trycloudflare.com/.shopify/graphiql/auth/callback"
 ]
 
 [webhooks]
