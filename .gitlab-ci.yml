@@ -29,7 +29,7 @@ build-caprover:
   after_script:
     - docker logout $CI_REGISTRY
   script:
-    - docker build -t $BUILD_IMAGE_TAG_COMMIT -t $BUILD_IMAGE_TAG_LATEST -f Dockerfile .
+    - docker build -t $BUILD_IMAGE_TAG_COMMIT -t $BUILD_IMAGE_TAG_LATEST --build-arg SHOPIFY_API_KEY=$EX_4_SHOPIFY_API_KEY -f Dockerfile .
     - docker push $DEPLOYER_IMAGE_TAG_NAME --all-tags
     - echo "LATEST_BUILD_IMAGE_TAG_NAME=$BUILD_IMAGE_TAG_COMMIT" > .env
   artifacts:
