@@ -1,5 +1,8 @@
 import * as crypto from "crypto";
-import { faker } from "@faker-js/faker";
+import { readFileSync } from "fs";
+import { join } from "path";
+import shopify from "./shopify.js";
+import { getShopMultipassSecret } from "./metafield.js";
 
 /**
  * handleMultipassSignIn
@@ -8,17 +11,42 @@ import { faker } from "@faker-js/faker";
  * @returns {Promise<void>}
  */
 export async function handleMultipassSignIn(req, res) {
-  const email = decodeURIComponent(
-    req.query.email || faker.internet.exampleEmail().toLowerCase()
-  );
-  const shop = decodeURIComponent(req.query.shop || process.env.SHOP);
+  const shop = decodeURIComponent(req?.query?.shop ?? "");
+  const email = decodeURIComponent(req?.query?.email ?? "");
 
-  const signInToken = await generateMultipassToken(
-    { email, created_at: new Date().toISOString() },
-    process.env.SHOPIFY_MULTIPASS_SECRET
-  );
+  if (!shop) {
+    return res.status(403).send("OK");
+  }
 
-  return res.redirect(`https://${shop}/account/login/multipass/${signInToken}`);
+  if (email) {
+    const session = await shopify.config.sessionStorage.loadSession(
+      shopify.api.session.getOfflineId(shop)
+    );
+
+    if (!session) {
+      return res.status(403).send("OK");
+    }
+
+    const secret = await getShopMultipassSecret(session);
+
+    const signInToken = await generateMultipassToken(
+      { email, created_at: new Date().toISOString() },
+      secret
+    );
+
+    return res.redirect(
+      `https://${shop}/account/login/multipass/${signInToken}`
+    );
+  }
+
+  return res
+    .status(200)
+    .send(
+      readFileSync(join(process.cwd(), "views/multipass.html"))
+        .toString("utf-8")
+        .replace("{{url}}", `${process.env.HOST}/api/sign-in/multipass`)
+        .replace("{{shop}}", `${shop}`)
+    );
 }
 
 /**

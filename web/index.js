@@ -9,6 +9,10 @@ import shopify from "./shopify.js";
 import productCreator from "./product-creator.js";
 import PrivacyWebhookHandlers from "./privacy.js";
 import { handleMultipassSignIn } from "./shopify.multipass.js";
+import {
+  getShopMultipassSecret,
+  updateShopMultipassSecret,
+} from "./metafield.js";
 
 const PORT = parseInt(
   process.env.BACKEND_PORT || process.env.PORT || "3000",
@@ -62,6 +66,30 @@ app.get("/api/products/create", async (_req, res) => {
     error = e.message;
   }
   res.status(status).send({ success: status === 200, error });
+});
+
+app.get("/api/multipass/secret", async (req, res) => {
+  const session = res.locals.shopify.session;
+
+  res.json({
+    signInUrl: `${process.env.HOST}/api/sign-in/multipass?shop=${session.shop}`,
+    secret: await getShopMultipassSecret(res.locals.shopify.session),
+  });
+});
+
+app.post("/api/multipass/secret", async (req, res) => {
+  const secret = req?.body?.secret;
+
+  if (!secret) {
+    return res.status(400).json({ error: "Secret can not be blank" });
+  }
+
+  const session = res.locals.shopify.session;
+
+  res.json({
+    signInUrl: `${process.env.HOST}/api/sign-in/multipass?shop=${session.shop}`,
+    secret: await updateShopMultipassSecret(session, secret),
+  });
 });
 
 app.use(shopify.cspHeaders());
