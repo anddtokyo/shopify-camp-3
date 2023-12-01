@@ -8,6 +8,7 @@ import serveStatic from "serve-static";
 import shopify from "./shopify.js";
 import productCreator from "./product-creator.js";
 import PrivacyWebhookHandlers from "./privacy.js";
+import { handleMultipassSignIn } from "./shopify.multipass.js";
 
 const PORT = parseInt(
   process.env.BACKEND_PORT || process.env.PORT || "3000",
@@ -35,6 +36,8 @@ app.post(
 
 // If you are adding routes outside of the /api path, remember to
 // also add a proxy rule for them in web/frontend/vite.config.js
+
+app.get("/api/sign-in/multipass", handleMultipassSignIn);
 
 app.use("/api/*", shopify.validateAuthenticatedSession());
 
