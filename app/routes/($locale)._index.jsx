@@ -1,5 +1,12 @@
 import {defer} from '@shopify/remix-oxygen';
-import {Await, useLoaderData, Link} from '@remix-run/react';
+import {
+  Await,
+  useLoaderData,
+  Link,
+  useSubmit,
+  Form,
+  useSearchParams,
+} from '@remix-run/react';
 import {Suspense} from 'react';
 import {Image, Money} from '@shopify/hydrogen';
 
@@ -13,11 +20,15 @@ export const meta = () => {
 /**
  * @param {LoaderFunctionArgs}
  */
-export async function loader({context}) {
+export async function loader({context, params, request}) {
   const {storefront} = context;
   const {collections} = await storefront.query(FEATURED_COLLECTION_QUERY);
   const featuredCollection = collections.nodes[0];
-  const recommendedProducts = storefront.query(RECOMMENDED_PRODUCTS_QUERY);
+  const productSortKey = new URL(request.url).searchParams.get('product-sort');
+  console.log({productSortKey});
+  const recommendedProducts = storefront.query(
+    buildRecommendedProductsQuery(productSortKey),
+  );
 
   return defer({featuredCollection, recommendedProducts});
 }
@@ -61,10 +72,36 @@ function FeaturedCollection({collection}) {
  *   products: Promise<RecommendedProductsQuery>;
  * }}
  */
-function RecommendedProducts({products}) {
+function RecommendedProducts({products, context}) {
+  const submit = useSubmit();
+  const [searchParams] = useSearchParams();
+  const sortKey = searchParams.get('product-sort');
+
+  const handleSelectSortKey = (e) => {
+    submit(e.currentTarget.form);
+  };
+
   return (
     <div className="recommended-products">
-      <h2>Recommended Products</h2>
+      <div className="flex items-center justify-between">
+        <h2>Recommended Products</h2>
+
+        <Form method="get">
+          <label className="mr-2" htmlFor="product-filter">
+            Sort by:
+          </label>
+          <select
+            onChange={handleSelectSortKey}
+            name="product-sort"
+            id="product-sort"
+            value={sortKey}
+          >
+            <option value="UPDATED_AT">None</option>
+            <option value="TITLE">Title</option>
+            <option value="PRICE">Price</option>
+          </select>
+        </Form>
+      </div>
       <Suspense fallback={<div>Loading...</div>}>
         <Await resolve={products}>
           {({products}) => (
@@ -118,7 +155,8 @@ const FEATURED_COLLECTION_QUERY = `#graphql
   }
 `;
 
-const RECOMMENDED_PRODUCTS_QUERY = `#graphql
+const buildRecommendedProductsQuery = (sortKey = 'UPDATED_AT') => {
+  return `
   fragment RecommendedProduct on Product {
     id
     title
@@ -141,13 +179,14 @@ const RECOMMENDED_PRODUCTS_QUERY = `#graphql
   }
   query RecommendedProducts ($country: CountryCode, $language: LanguageCode)
     @inContext(country: $country, language: $language) {
-    products(first: 4, sortKey: UPDATED_AT, reverse: true) {
+    products(first: 4, sortKey: ${sortKey}, reverse: true) {
       nodes {
         ...RecommendedProduct
       }
     }
   }
 `;
+};
 
 /** @typedef {import('@shopify/remix-oxygen').LoaderFunctionArgs} LoaderFunctionArgs */
 /** @template T @typedef {import('@remix-run/react').MetaFunction<T>} MetaFunction */
