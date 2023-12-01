@@ -25,7 +25,6 @@ export async function loader({context, params, request}) {
   const {collections} = await storefront.query(FEATURED_COLLECTION_QUERY);
   const featuredCollection = collections.nodes[0];
   const productSortKey = new URL(request.url).searchParams.get('product-sort');
-  console.log({productSortKey});
   const recommendedProducts = storefront.query(
     buildRecommendedProductsQuery(productSortKey),
   );
@@ -83,9 +82,8 @@ function RecommendedProducts({products, context}) {
 
   return (
     <div className="recommended-products">
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between mb-3">
         <h2>Recommended Products</h2>
-
         <Form method="get">
           <label className="mr-2" htmlFor="product-filter">
             Sort by:
