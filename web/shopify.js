@@ -18,7 +18,7 @@ const billingConfig = {
 
 const shopify = shopifyApp({
   api: {
-    apiVersion: ApiVersion.July23,
+    apiVersion: "2023-10",
     restResources,
     billing: undefined, // or replace with billingConfig above to enable example billing
   },

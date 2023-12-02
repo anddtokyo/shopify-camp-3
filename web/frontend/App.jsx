@@ -26,6 +26,10 @@ export default function App() {
                   label: "Multipass settings",
                   destination: "/multipass",
                 },
+                {
+                  label: "Fulfillment settings",
+                  destination: "/fulfillment",
+                },
               ]}
             />
             <Routes pages={pages} />

@@ -13,6 +13,13 @@ import {
   getShopMultipassSecret,
   updateShopMultipassSecret,
 } from "./metafield.js";
+import { fulfillmentServiceRegisterController } from "./fulfillment.js";
+import {
+  fulfillOrderController,
+  getOrderController,
+  orderCaptureController,
+} from "./order.js";
+import { inventoryAdjustQuantitiesController } from "./inventory.js";
 
 const PORT = parseInt(
   process.env.BACKEND_PORT || process.env.PORT || "3000",
@@ -91,6 +98,15 @@ app.post("/api/multipass/secret", async (req, res) => {
     secret: await updateShopMultipassSecret(session, secret),
   });
 });
+
+app.post("/api/fulfillment/register", fulfillmentServiceRegisterController);
+app.get("/api/order/:id", getOrderController);
+app.post("/api/order/fulfill", fulfillOrderController);
+app.post("/api/order/capture", orderCaptureController);
+app.post(
+  "/api/inventory-adjust-quantities",
+  inventoryAdjustQuantitiesController
+);
 
 app.use(shopify.cspHeaders());
 app.use(serveStatic(STATIC_PATH, { index: false }));
