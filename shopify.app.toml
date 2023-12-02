@@ -2,7 +2,7 @@
 
 name = "jp-plus-camp-3-exercise-6"
 client_id = "41de07e410f47d98ed6f64c9f66dc081"
-application_url = "https://nc-jill-dutch-candy.trycloudflare.com"
+application_url = "https://banned-inter-fur-dairy.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -12,10 +12,10 @@ use_legacy_install_flow = true
 
 [auth]
 redirect_urls = [
-  "https://nc-jill-dutch-candy.trycloudflare.com/auth/callback",
-  "https://nc-jill-dutch-candy.trycloudflare.com/auth/shopify/callback",
-  "https://nc-jill-dutch-candy.trycloudflare.com/api/auth/callback",
-  "https://nc-jill-dutch-candy.trycloudflare.com/.shopify/graphiql/auth/callback"
+  "https://banned-inter-fur-dairy.trycloudflare.com/auth/callback",
+  "https://banned-inter-fur-dairy.trycloudflare.com/auth/shopify/callback",
+  "https://banned-inter-fur-dairy.trycloudflare.com/api/auth/callback",
+  "https://banned-inter-fur-dairy.trycloudflare.com/.shopify/graphiql/auth/callback"
 ]
 
 [webhooks]

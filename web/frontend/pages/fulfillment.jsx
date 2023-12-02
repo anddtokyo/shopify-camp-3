@@ -28,12 +28,11 @@ export default function Fulfillment() {
       .then((response) => response.json())
       .then(console.log)
       .finally(() => setIsLoading(false));
-  }, []);
+  }, [adjustQuantities]);
 
-  const handleAdjustQuantitiesChange = useCallback(
-    (value) => setAdjustQuantities(value),
-    []
-  );
+  const handleAdjustQuantitiesChange = useCallback((value) => {
+    setAdjustQuantities(parseInt(value, 10));
+  }, []);
 
   const register = useCallback(() => {
     setIsLoading(true);
@@ -65,7 +64,7 @@ export default function Fulfillment() {
             <Form onSubmit={handleSubmit}>
               <FormLayout>
                 <TextField
-                  value={adjustQuantities}
+                  value={adjustQuantities.toString()}
                   onChange={handleAdjustQuantitiesChange}
                   label="Adjust Quantities"
                   type="number"
