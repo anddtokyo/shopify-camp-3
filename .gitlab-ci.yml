@@ -1,0 +1,48 @@
+stages:
+  - build
+  - deploy
+
+variables:
+  DOCKER_HOST: tcp://docker:2376
+  DOCKER_TLS_CERTDIR: "/certs"
+  DOCKER_TLS_VERIFY: 1
+  DOCKER_CERT_PATH: "$DOCKER_TLS_CERTDIR/client"
+
+build-caprover:
+  stage: build
+  image: docker:20
+  services:
+    - docker:20-dind
+  variables:
+    DEPLOYER_IMAGE_TAG_NAME: $CI_REGISTRY_IMAGE/$CI_COMMIT_BRANCH
+    BUILD_IMAGE_TAG_COMMIT: $CI_REGISTRY_IMAGE/$CI_COMMIT_BRANCH:$CI_COMMIT_SHORT_SHA
+    BUILD_IMAGE_TAG_LATEST: $CI_REGISTRY_IMAGE/$CI_COMMIT_BRANCH:latest
+  before_script:
+    - until docker info; do sleep 1; done
+    - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY --username $CI_REGISTRY_USER --password-stdin
+  after_script:
+    - docker logout $CI_REGISTRY
+  script:
+    - docker build -t $BUILD_IMAGE_TAG_COMMIT -t $BUILD_IMAGE_TAG_LATEST --build-arg SHOPIFY_API_KEY=$EXERCISE6_SHOPIFY_API_KEY -f Dockerfile .
+    - docker push $DEPLOYER_IMAGE_TAG_NAME --all-tags
+    - echo "LATEST_BUILD_IMAGE_TAG_NAME=$BUILD_IMAGE_TAG_COMMIT" > .env
+  artifacts:
+    reports:
+      dotenv: .env
+    expire_in: 1 days
+  only:
+    refs:
+      - exercise-6
+
+deploy-caprover:
+  stage: deploy
+  image: caprover/cli-caprover:2.2.3
+  variables:
+    CAPROVER_APP: $EXERCISE6_CAPROVER_STAGING_APP
+    CAPROVER_APP_TOKEN: $EXERCISE6_CAPROVER_STAGING_APP_TOKEN
+    CAPROVER_IMAGE_NAME: $LATEST_BUILD_IMAGE_TAG_NAME
+  script:
+    - caprover deploy
+  only:
+    refs:
+      - exercise-6

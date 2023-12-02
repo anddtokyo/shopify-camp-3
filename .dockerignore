@@ -1,5 +1,7 @@
 web/node_modules
 web/frontend/node_modules
 web/frontend/dist
-.env
-.env.sample
+web/.env
+web/.env.sample
+web/.DS_Store
+web/database.sqlite
